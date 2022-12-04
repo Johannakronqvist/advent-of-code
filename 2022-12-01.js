@@ -1,19 +1,3 @@
-/**
- * input string with sections of numbers separated by space
- * output number (the section with highest total value)
- */
-
-/**
- * input each new number one at a time
- * put the numbers in an array with a sub array
- *  if line is empty create a new subarray and put the numbers there
- * when there is no more numbers...
- * create an empty array called totalCalories
- *  loop through the array, check each subarray and add the numbers togheter => save to totalCalories
- *  compare the values in totalCalories to find the biggest one and return it
- *
- */
-
 const fs = require('fs');
 
 const data = fs.readFileSync('data.txt', 'utf-8');
