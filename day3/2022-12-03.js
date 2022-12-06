@@ -1,10 +1,30 @@
-//Lowercase item types a through z have priorities 1 through 26.
-//Uppercase item types A through Z have priorities 27 through 52.
+const fs = require('fs');
+const rucksackData = fs.readFileSync('rucksackData.txt', 'utf-8').split('\r\n');
 
-/**create a variable for characters total value
- * Loop over the data
- *  for each string split it in half
- *  compare the first and second half to find a similar charachter
- *    loop over the characters of the first string and check if the the second string contains that character
- *    add that characters value to the variable
- */
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+let totalValueOfItems = 0;
+
+for (let i = 0; i < rucksackData.length; i++) {
+  const itemsOfRucksack = rucksackData[i];
+  const middleOfItems = itemsOfRucksack.length / 2;
+
+  const compartment1 = itemsOfRucksack.slice(0, middleOfItems);
+  const compartment2 = itemsOfRucksack.slice(middleOfItems);
+
+  let j = 0;
+  let errorItem;
+
+  while (errorItem === undefined) {
+    let currentCharacter = compartment1[j];
+    if (compartment2.includes(currentCharacter)) {
+      errorItem = currentCharacter;
+    } else {
+      j += 1;
+    }
+  }
+
+  totalValueOfItems += ALPHABET.indexOf(errorItem) + 1;
+}
+
+console.log('totalValueOfItems', totalValueOfItems);
