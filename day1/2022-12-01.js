@@ -3,7 +3,6 @@ const fs = require('fs');
 const data = fs.readFileSync('data.txt', 'utf-8');
 
 let stringToArray = data.split('\r\n');
-console.log(stringToArray[13] === '');
 
 let caloriesPerElf = [];
 let subArray = [];
